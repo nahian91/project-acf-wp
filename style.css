@@ -1,0 +1,60 @@
+/*
+Theme Name: ACF Theme
+Theme URI: https://www.anahian.com/acf-theme
+Author: Abdullah Nahian
+Author URI: https://www.anahian.com
+Description: 
+Version: 1.0
+Requires at least: 5.0
+Tested up to: 5.4
+Requires PHP: 7.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: acf
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+.navbar-nav li a {
+  font-size: 14px;
+  padding-top: 2.3rem;
+  padding-bottom: 2.3rem;
+  padding-left: 18px;
+  padding-right: 18px;
+  font-weight: 700;
+  color: #000000;
+  position: relative;
+  text-transform: uppercase;
+  opacity: 1 !important;
+  display: block;
+}
+.navbar-nav li a::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	bottom: 0px;
+	left: 0;
+	background-color: #1ba12d;
+	visibility: hidden;
+	-webkit-transform: scaleX(0);
+	-ms-transform: scaleX(0);
+	transform: scaleX(0);
+	-webkit-transition: all 0.5s ease-in-out 0s;
+	-o-transition: all 0.5s ease-in-out 0s;
+	transition: all 0.5s ease-in-out 0s;
+	z-index: -1;
+}
+.navbar-nav li a:hover {
+	color: #1ba12d;
+}
+.navbar-nav li a:hover::before {
+	visibility: visible;
+	background-color: #1ba12d;
+	-webkit-transform: scaleX(1);
+	-ms-transform: scaleX(1);
+	transform: scaleX(1);
+}
+
+.navbar-nav li.current_page_item a{
+    color: #1ba12d;
+}

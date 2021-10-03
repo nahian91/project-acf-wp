@@ -7,76 +7,67 @@ Template Name: Home
 get_header();?>
       <div class="hero-wrap">
          <div class="home-slider owl-carousel">
-            <div class="slider-item" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/bg_2.jpg);">
-               <div class="overlay"></div>
-               <div class="container">
-                  <div class="row no-gutters slider-text align-items-center justify-content-center">
-                     <div class="col-md-8 ftco-animate">
-                        <div class="text w-100 text-center">
-                           <h2>We Support Business</h2>
-                           <h1 class="mb-4">The Best Business Support</h1>
-                           <p><a href="#" class="btn btn-white">Connect with us</a></p>
+
+         <?php
+            if($sliders = get_field('sliders', 'options')) {
+               foreach($sliders as $slider) {
+                  ?>
+                        <div class="slider-item" style="background-image:url(<?php echo $slider['slider_image']['url']?>">
+                        <div class="overlay"></div>
+                        <div class="container">
+                           <div class="row no-gutters slider-text align-items-center justify-content-center">
+                              <div class="col-md-8 ftco-animate">
+                                 <div class="text w-100 text-center">
+                                    <h2><?php echo $slider['slider_subtitle'];?></h2>
+                                    <h1 class="mb-4"><?php echo $slider['slider_title'];?></h1>
+                                    <p><a href="<?php echo $slider['slider_button_url'];?>" class="btn btn-white"><?php echo $slider['slider_button_text'];?></a></p>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
                      </div>
-                  </div>
-               </div>
-            </div>
-            <div class="slider-item" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/bg_3.jpg);">
-               <div class="overlay"></div>
-               <div class="container">
-                  <div class="row no-gutters slider-text align-items-center justify-content-center">
-                     <div class="col-md-8 ftco-animate">
-                        <div class="text w-100 text-center">
-                           <h2>We Give Advice</h2>
-                           <h1 class="mb-4">Expert Financial Advice</h1>
-                           <p><a href="#" class="btn btn-white">Connect with us</a></p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
+                  <?php
+               }
+            } 
+            ?>
+            
          </div>
       </div>
       <section class="ftco-section ftco-no-pt bg-light">
          <div class="container">
             <div class="row d-flex no-gutters">
-               <div class="col-md-6 d-flex">
-                  <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(<?php echo get_template_directory_uri();?>/assets/images/about.jpg);">
-                  </div>
-               </div>
+               <?php
+                  if($features = get_field('features', 'options')) {
+               ?>
+                     <div class="col-md-6 d-flex">
+                        <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(<?php echo $features['feature_image']['url']; ?>);">
+                        </div>
+                     </div>
+               <?php
+                  }
+               ?>
+               
                <div class="col-md-6 pl-md-5 py-md-5">
                   <div class="heading-section pl-md-4 pt-md-5">
-                     <span class="subheading">Welcome to Accounting</span>
-                     <h2 class="mb-4">We Are the Best Accounting Agency</h2>
+                     <span class="subheading"><?php echo $features['feature_subtitle'] ?></span>
+                     <h2 class="mb-4"><?php echo $features['feature_title']; ?></h2>
                   </div>
-                  <div class="services-2 w-100 d-flex">
-                     <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-wealth"></span></div>
-                     <div class="text pl-4">
-                        <h4>Market Analysis</h4>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+
+                  <?php
+                     $features_list = get_field('features_list', 'options');
+                     foreach($features_list as $feature) {
+                  ?>
+                     <div class="services-2 w-100 d-flex">
+                        <div class="icon d-flex align-items-center justify-content-center"><i class="fa <?php echo $feature['feature_list_icon'];?>"></i></div>
+                        <div class="text pl-4">
+                           <h4><?php echo $feature['feature_list_title'];?></h4>
+                           <p><?php echo $feature['feature_list_description'];?></p>
+                        </div>
                      </div>
-                  </div>
-                  <div class="services-2 w-100 d-flex">
-                     <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-accountant"></span></div>
-                     <div class="text pl-4">
-                        <h4>Accounting Advisor</h4>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-                     </div>
-                  </div>
-                  <div class="services-2 w-100 d-flex">
-                     <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-teamwork"></span></div>
-                     <div class="text pl-4">
-                        <h4>General Consultancy</h4>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-                     </div>
-                  </div>
-                  <div class="services-2 w-100 d-flex">
-                     <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-accounting"></span></div>
-                     <div class="text pl-4">
-                        <h4>Structured Assestment</h4>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-                     </div>
-                  </div>
+                  <?php
+                     }
+                  ?>
+                  
                </div>
             </div>
          </div>

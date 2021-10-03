@@ -49,18 +49,41 @@ function acf_op_init() {
         // Register options page.
         $parent = acf_add_options_page(array(
             'page_title'    => __('Theme Options', 'acf'),
-            'menu_title'    => __('Theme Settings', 'acf'),
+            'menu_title'    => __('General Settings', 'acf'),
             'menu_slug'     => 'theme-general-settings',
             'capability'    => 'edit_posts',
             'redirect'      => false
         ));
 
         // Add sub page.
-        $child = acf_add_options_page(array(
-            'page_title'  => __('Social Settings'),
-            'menu_title'  => __('Social'),
+        $child = acf_add_options_sub_page(array(
+            'page_title'  => __('Header Settings', 'acf'),
+            'menu_title'  => __('Header Settings', 'acf'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
+
+        // Add sub page.
+        $child = acf_add_options_sub_page(array(
+            'page_title'  => __('Home Page', 'acf'),
+            'menu_title'  => __('Home Page', 'acf'),
             'parent_slug' => $parent['menu_slug'],
         ));
     }
 }
 add_action('acf/init', 'acf_op_init');
+
+function acf_style() {
+    $feature_lists_style = get_field('feature_lists_style', 'options');
+?>
+    <style>
+        .services-2 .icon{
+            background-color: <?php echo $feature_lists_style['icon_background'];?>
+        }
+        .services-2 .icon i{
+            color: <?php echo $feature_lists_style['icon_color'];?>;
+            font-size: <?php echo $feature_lists_style['icon_size'];?>;
+        }
+    </style>
+<?php
+}
+add_action('wp_head', 'acf_style');

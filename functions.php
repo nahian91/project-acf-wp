@@ -68,6 +68,27 @@ function acf_op_init() {
             'menu_title'  => __('Home Page', 'acf'),
             'parent_slug' => $parent['menu_slug'],
         ));
+
+        // Add sub page.
+        $child = acf_add_options_sub_page(array(
+            'page_title'  => __('About Page', 'acf'),
+            'menu_title'  => __('About Page', 'acf'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
+
+        // Add sub page.
+        $child = acf_add_options_sub_page(array(
+            'page_title'  => __('Services Page', 'acf'),
+            'menu_title'  => __('Services Page', 'acf'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
+
+        // Add sub page.
+        $child = acf_add_options_sub_page(array(
+            'page_title'  => __('Contact Page', 'acf'),
+            'menu_title'  => __('Contact Page', 'acf'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
     }
 }
 add_action('acf/init', 'acf_op_init');

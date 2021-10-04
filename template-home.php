@@ -75,186 +75,99 @@ get_header();?>
       <section class="ftco-section bg-light ftco-no-pt">
          <div class="container">
             <div class="row">
+
+            <?php
+               $services = get_field('services', 'options');
+               foreach($services as $service) {
+            ?>
                <div class="col-md-6 col-lg-3 d-flex services align-self-stretch px-4 ftco-animate">
                   <div class="d-block">
                      <div class="icon d-flex mr-2">
-                        <span class="flaticon-accounting-1"></span>
+                        <i class="fa <?php echo $service['service_icon']; ?>"></i>
                      </div>
                      <div class="media-body">
-                        <h3 class="heading">Accounting</h3>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                        <h3 class="heading"><?php echo $service['service_title']; ?></h3>
+                        <p><?php echo $service['service_description']; ?></p>
                      </div>
                   </div>
                </div>
-               <div class="col-md-6 col-lg-3 d-flex services align-self-stretch px-4 ftco-animate">
-                  <div class="d-block">
-                     <div class="icon d-flex mr-2">
-                        <span class="flaticon-tax"></span>
-                     </div>
-                     <div class="media-body">
-                        <h3 class="heading">Tax, Compliance &amp; Payroll</h3>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-3 d-flex services align-self-stretch px-4 ftco-animate">
-                  <div class="d-block">
-                     <div class="icon d-flex mr-2">
-                        <span class="flaticon-loan"></span>
-                     </div>
-                     <div class="media-body">
-                        <h3 class="heading">Financial Services</h3>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-3 d-flex services align-self-stretch px-4 ftco-animate">
-                  <div class="d-block">
-                     <div class="icon d-flex mr-2">
-                        <span class="flaticon-budget"></span>
-                     </div>
-                     <div class="media-body">
-                        <h3 class="heading">Growth &amp; Funding Access</h3>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                     </div>
-                  </div>
-               </div>
+            <?php
+               }
+            ?>
+
             </div>
          </div>
       </section>
+
+      <?php
+         if(get_field('show_counter_section', 'options')) {
+      ?> 
       <section class="ftco-counter bg-light ftco-no-pt" id="section-counter">
          <div class="container">
             <div class="row">
-               <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                  <div class="block-18 text-center">
-                     <div class="text">
-                        <strong class="number" data-number="50">0</strong>
-                     </div>
-                     <div class="text">
-                        <span>Years of Experienced</span>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                  <div class="block-18 text-center">
-                     <div class="text">
-                        <strong class="number" data-number="8500">0</strong>
-                     </div>
-                     <div class="text">
-                        <span>Cases Completed</span>
+
+               <?php
+                  $counters = get_field('counters', 'options');
+                  foreach($counters as $counter) {
+               ?>
+                     <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                     <div class="block-18 text-center">
+                        <div class="text">
+                           <strong class="number" data-number="<?php echo $counter['counter_number'];?>">0</strong>
+                        </div>
+                        <div class="text">
+                           <span><?php echo $counter['counter_title'];?></span>
+                        </div>
                      </div>
                   </div>
-               </div>
-               <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                  <div class="block-18 text-center">
-                     <div class="text">
-                        <strong class="number" data-number="20">0</strong>
-                     </div>
-                     <div class="text">
-                        <span>Awards Won</span>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                  <div class="block-18 text-center">
-                     <div class="text">
-                        <strong class="number" data-number="50">0</strong>
-                     </div>
-                     <div class="text">
-                        <span>Expert Consultant</span>
-                     </div>
-                  </div>
-               </div>
+               <?php
+                  }
+               ?>
             </div>
          </div>
       </section>
+      <?php
+         }
+      ?>
+
       <section class="ftco-section testimony-section bg-light">
          <div class="overlay"></div>
          <div class="container">
             <div class="row justify-content-center pb-5 mb-3">
                <div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
-                  <span class="subheading">Testimonies</span>
-                  <h2>Happy Clients &amp; Feedbacks</h2>
+
+               <?php
+                  $testimonie_info = get_field('testimonies_info', 'options');
+               ?> 
+                  <span class="subheading"><?php echo $testimonie_info['section_subtitle'];?></span>
+                  <h2><?php echo $testimonie_info['section_title'];?></h2>
                </div>
             </div>
             <div class="row ftco-animate">
                <div class="col-md-12">
                   <div class="carousel-testimony owl-carousel ftco-owl">
-                     <div class="item">
+                     <?php
+                        $testimonies = get_field('testimonies','options');
+                        foreach($testimonies as $testy) {
+                     ?>
+                        <div class="item">
                         <div class="testimony-wrap py-4">
                            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
                            <div class="text">
-                              <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                              <p class="mb-4"><?php echo $testy['description'];?></p>
                               <div class="d-flex align-items-center">
-                                 <div class="user-img" style="background-image: url(<?php echo get_template_directory_uri();?>/assets/images/person_1.jpg)"></div>
+                                 <div class="user-img" style="background-image: url(<?php echo $testy['image']['url'];?>)"></div>
                                  <div class="pl-3">
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">Marketing Manager</span>
+                                    <p class="name"><?php echo $testy['name'];?></p>
+                                    <span class="position"><?php echo $testy['designation'];?></span>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
-                     <div class="item">
-                        <div class="testimony-wrap py-4">
-                           <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-                           <div class="text">
-                              <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                              <div class="d-flex align-items-center">
-                                 <div class="user-img" style="background-image: url(<?php echo get_template_directory_uri();?>/assets/images/person_2.jpg)"></div>
-                                 <div class="pl-3">
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">Marketing Manager</span>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="testimony-wrap py-4">
-                           <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-                           <div class="text">
-                              <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                              <div class="d-flex align-items-center">
-                                 <div class="user-img" style="background-image: url(<?php echo get_template_directory_uri();?>/assets/images/person_3.jpg)"></div>
-                                 <div class="pl-3">
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">Marketing Manager</span>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="testimony-wrap py-4">
-                           <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-                           <div class="text">
-                              <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                              <div class="d-flex align-items-center">
-                                 <div class="user-img" style="background-image: url(<?php echo get_template_directory_uri();?>/assets/images/person_1.jpg)"></div>
-                                 <div class="pl-3">
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">Marketing Manager</span>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="testimony-wrap py-4">
-                           <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-                           <div class="text">
-                              <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                              <div class="d-flex align-items-center">
-                                 <div class="user-img" style="background-image: url(<?php echo get_template_directory_uri();?>/assets/images/person_2.jpg)"></div>
-                                 <div class="pl-3">
-                                    <p class="name">Roger Scott</p>
-                                    <span class="position">Marketing Manager</span>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                     <?php
+                        }
+                     ?>
                   </div>
                </div>
             </div>
@@ -278,84 +191,32 @@ get_header();?>
                      <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                   </div>
                   <div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
+
+                  <?php
+                     $faqs = get_field('faqs', 'options');
+                     $i = 0;
+                     foreach($faqs as $faq) {
+                     $i++;
+                  ?>
                      <div class="card">
-                        <div class="card-header p-0" id="headingOne">
+                        <div class="card-header p-0" id="heading<?php echo $i;?>">
                            <h2 class="mb-0">
-                              <button href="#collapseOne" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
-                                 <p class="mb-0">How to fixed a problem?</p>
+                              <button href="#collapse<?php echo $i;?>" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapse<?php echo $i;?>">
+                                 <p class="mb-0"><?php echo $faq['faq_title'];?></p>
                                  <i class="fa" aria-hidden="true"></i>
                               </button>
                            </h2>
                         </div>
-                        <div class="collapse show" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="collapse<?php if($i==1) {echo ' show';} ?>" id="collapse<?php echo $i;?>" role="tabpanel" aria-labelledby="heading<?php echo $i;?>">
                            <div class="card-body py-3 px-0">
-                              <ol>
-                                 <li>Far far away, behind the word mountains</li>
-                                 <li>Consonantia, there live the blind texts</li>
-                                 <li>When she reached the first hills of the Italic Mountains</li>
-                                 <li>Bookmarksgrove, the headline of Alphabet Village</li>
-                                 <li>Separated they live in Bookmarksgrove right</li>
-                              </ol>
+                              <?php echo $faq['faq_description'];?>
                            </div>
                         </div>
                      </div>
-                     <div class="card">
-                        <div class="card-header p-0" id="headingTwo" role="tab">
-                           <h2 class="mb-0">
-                              <button href="#collapseTwo" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
-                                 <p class="mb-0">How to manage your business loans?</p>
-                                 <i class="fa" aria-hidden="true"></i>
-                              </button>
-                           </h2>
-                        </div>
-                        <div class="collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
-                           <div class="card-body py-3 px-0">
-                              <ol>
-                                 <li>Far far away, behind the word mountains</li>
-                                 <li>Consonantia, there live the blind texts</li>
-                                 <li>When she reached the first hills of the Italic Mountains</li>
-                                 <li>Bookmarksgrove, the headline of Alphabet Village</li>
-                                 <li>Separated they live in Bookmarksgrove right</li>
-                              </ol>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="card">
-                        <div class="card-header p-0" id="headingThree" role="tab">
-                           <h2 class="mb-0">
-                              <button href="#collapseThree" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
-                                 <p class="mb-0">How to grow your investments funds?</p>
-                                 <i class="fa" aria-hidden="true"></i>
-                              </button>
-                           </h2>
-                        </div>
-                        <div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingTwo">
-                           <div class="card-body py-3 px-0">
-                              <ol>
-                                 <li>Far far away, behind the word mountains</li>
-                                 <li>Consonantia, there live the blind texts</li>
-                                 <li>When she reached the first hills of the Italic Mountains</li>
-                                 <li>Bookmarksgrove, the headline of Alphabet Village</li>
-                                 <li>Separated they live in Bookmarksgrove right</li>
-                              </ol>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="card">
-                        <div class="card-header p-0" id="headingFour" role="tab">
-                           <h2 class="mb-0">
-                              <button href="#collapseFour" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
-                                 <p class="mb-0">What are those requirements for businesses?</p>
-                                 <i class="fa" aria-hidden="true"></i>
-                              </button>
-                           </h2>
-                        </div>
-                        <div class="collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingTwo">
-                           <div class="card-body py-3 px-0">
-                              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                           </div>
-                        </div>
-                     </div>
+                  <?php
+                     }
+                  ?>
+                    
                   </div>
                </div>
             </div>
@@ -370,48 +231,35 @@ get_header();?>
                </div>
             </div>
             <div class="row d-flex">
+
+            <?php
+               $args = array(
+                  'post_type' => 'post',
+                  'posts_per_page' => 3
+               );
+
+               $query = new WP_Query($args);
+               while($query -> have_posts()) {
+                  $query -> the_post()
+            ?>
                <div class="col-md-4 d-flex ftco-animate">
                   <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_1.jpg');">
+                     <a href="<?php the_permalink();?>" class="block-20 rounded" style="background-image: url('<?php the_post_thumbnail_url();?>');">
                      </a>
                      <div class="text p-4">
                         <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                           <div><a href="#"><?php the_date(); ?></a></div>
+                           <div><a href="#"><?php the_author(); ?></a></div>
+                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> <?php echo get_comments_number(); ?></a></div>
                         </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                        <h3 class="heading"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
                      </div>
                   </div>
                </div>
-               <div class="col-md-4 d-flex ftco-animate">
-                  <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_2.jpg');">
-                     </a>
-                     <div class="text p-4">
-                        <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 d-flex ftco-animate">
-                  <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_3.jpg');">
-                     </a>
-                     <div class="text p-4">
-                        <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                     </div>
-                  </div>
-               </div>
+            <?php
+               }
+            ?>
+               
             </div>
          </div>
       </section>
@@ -419,15 +267,12 @@ get_header();?>
          <div class="container py-5">
             <div class="row">
                <div class="col-md-7 d-flex align-items-center">
-                  <h2 class="mb-3 mb-sm-0" style="color:black; font-size: 22px;">Sign Up for Your Free 1st Accounting Consultation</h2>
+                  <h2 class="mb-3 mb-sm-0" style="color:black; font-size: 22px;"><?php echo the_field('cta_title', 'options');?></h2>
                </div>
                <div class="col-md-5 d-flex align-items-center">
-                  <form action="#" class="subscribe-form">
-                     <div class="form-group d-flex">
-                        <input type="text" class="form-control" placeholder="Enter email address">
-                        <input type="submit" value="Subscribe" class="submit px-3">
-                     </div>
-                  </form>
+                  <div class="subscribe-form">
+                     <?php echo do_shortcode('[contact-form-7 id="171" title="cta_subscribe"]');?>  
+                  </div>
                </div>
             </div>
          </div>

@@ -89,6 +89,13 @@ function acf_op_init() {
             'menu_title'  => __('Contact Page', 'acf'),
             'parent_slug' => $parent['menu_slug'],
         ));
+
+        // Add sub page.
+        $child = acf_add_options_sub_page(array(
+            'page_title'  => __('Footer Settings', 'acf'),
+            'menu_title'  => __('Footer Settings', 'acf'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
     }
 }
 add_action('acf/init', 'acf_op_init');
@@ -108,3 +115,35 @@ function acf_style() {
 <?php
 }
 add_action('wp_head', 'acf_style');
+
+
+function acf_widgets_init() {
+    register_sidebar( array(
+        'name'          => __( 'Footer Widget 1', 'acf' ),
+        'id'            => 'footer-1',
+        'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'acf' ),
+        'before_widget' => '<div id="%1$s" class="widget list-unstyled">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="footer-heading">',
+        'after_title'   => '</h2>',
+    ) );
+    register_sidebar( array(
+        'name'          => __( 'Footer Widget 2', 'acf' ),
+        'id'            => 'footer-2',
+        'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'acf' ),
+        'before_widget' => '<li id="%1$s" class="widget py-1 d-block">',
+        'after_widget'  => '</li>',
+        'before_title'  => '<h2 class="footer-heading">',
+        'after_title'   => '</h2>',
+    ) );
+    register_sidebar( array(
+        'name'          => __( 'Footer Widget 3', 'acf' ),
+        'id'            => 'footer-3',
+        'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'acf' ),
+        'before_widget' => '<ul id="%1$s" class="widget py-1 d-block">',
+        'after_widget'  => '</ul>',
+        'before_title'  => '<h2 class="footer-heading">',
+        'after_title'   => '</h2>',
+    ) );
+}
+add_action( 'widgets_init', 'acf_widgets_init' );

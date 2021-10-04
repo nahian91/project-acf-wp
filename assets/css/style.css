@@ -11598,14 +11598,14 @@ textarea.form-control {
 .footer a {
   color: #1ba12d;
 }
-.footer .footer-heading {
+.footer .footer-heading, .widget h2 {
   font-size: 18px;
   margin-bottom: 30px;
   font-weight: 600;
   color: #fff;
   text-transform: uppercase;
 }
-.footer ul.list-unstyled li a {
+.footer ul.list-unstyled li a, .widget a {
   color: rgba(255, 255, 255, 0.5);
 }
 .footer .form-consultation {
@@ -11685,7 +11685,7 @@ textarea.form-control {
   border-radius: 50%;
   position: relative;
 }
-.ftco-footer-social li a span {
+.ftco-footer-social li a i {
   position: absolute;
   font-size: 20px;
   top: 50%;

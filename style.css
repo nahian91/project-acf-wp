@@ -58,3 +58,8 @@ Use it to make something cool, have fun, and share what you've learned with othe
 .navbar-nav li.current_page_item a{
     color: #1ba12d;
 }
+.widget .wp-block-page-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}

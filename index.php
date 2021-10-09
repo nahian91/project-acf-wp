@@ -4,7 +4,7 @@
          <div class="container">
             <div class="row no-gutters slider-text align-items-end">
                <div class="col-md-9 ftco-animate pb-5">
-                  <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
+                  <p class="breadcrumbs mb-2"><span class="mr-2"><a href="<?php echo site_url();?>">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
                   <h1 class="mb-0 bread">Blog</h1>
                </div>
             </div>
@@ -13,90 +13,16 @@
       <section class="ftco-section">
          <div class="container">
             <div class="row d-flex">
-               <div class="col-md-4 d-flex ftco-animate">
-                  <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_1.jpg');">
-                     </a>
-                     <div class="text p-4">
-                        <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 d-flex ftco-animate">
-                  <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_2.jpg');">
-                     </a>
-                     <div class="text p-4">
-                        <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 d-flex ftco-animate">
-                  <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_3.jpg');">
-                     </a>
-                     <div class="text p-4">
-                        <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 d-flex ftco-animate">
-                  <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_3.jpg');">
-                     </a>
-                     <div class="text p-4">
-                        <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 d-flex ftco-animate">
-                  <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_5.jpg');">
-                     </a>
-                     <div class="text p-4">
-                        <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 d-flex ftco-animate">
-                  <div class="blog-entry align-self-stretch">
-                     <a href="blog-single.html" class="block-20 rounded" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/images/image_6.jpg');">
-                     </a>
-                     <div class="text p-4">
-                        <div class="meta mb-2">
-                           <div><a href="#">March 31, 2020</a></div>
-                           <div><a href="#">Admin</a></div>
-                           <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                     </div>
-                  </div>
-               </div>
+               <?php
+                  if(have_posts()) {
+                     while(have_posts()) {
+                        the_post();
+
+                     get_template_part('template-parts/blog');
+                     
+                     }
+                  }
+               ?>
             </div>
             <div class="row mt-5">
                <div class="col text-center">

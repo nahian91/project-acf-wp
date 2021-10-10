@@ -49,6 +49,8 @@ if ( post_password_required() )
  
     <?php endif; // have_comments() ?>
  
-    <?php comment_form(); ?>
+    <?php comment_form(array(
+        'title_reply' => __('Leave a comment', 'acf')
+    )); ?>
  
 </div><!-- #comments -->
